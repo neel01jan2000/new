@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temp Converter</title>
+    <style>
+        body {
+            padding: 50px 100px;
+            text-align: center;
+            background-color: black;
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .inputfield {
+            margin: 0px 10px 10px 10px;
+        }
+
+        .container {
+            border-radius: 20px;
+            background-color: #990404;
+            padding: 20px 20px 60px 20px;
+            border: 1px solid beige;
+        }
+
+        label {
+            font-size: 21px;
+        }
+
+        input {
+            width: 250px;
+            height: 45px;
+            font-size: 20px;
+            font-weight: bold;
+            border: 1px solid beige;
+            border-radius: 5px;
+        }
+
+        .f34 {
+            display: inline-flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Temperature Converter</h1>
+        <div class="f34">
+            <div class="inputfield">
+                <label>Celsius</label><br>
+                <input type="number" value="0" id="cal" class="calcon hn">
+            </div><br>
+            <div class="inputfield">
+                <label>Fahrenheit</label><br>
+                <input type="number" value="32" id="fah" class="fahcon hn">
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <script>
+
+        var calcus = document.getElementById("cal");
+        var farh = document.getElementById("fah");
+
+        calcus.addEventListener('input', function () {
+            let c = this.value;
+            let f = (c * 9 / 5) + 32;
+            if (!Number.isInteger(f)) {
+                f = f.toFixed(4);
+            }
+            farh.value = f;
+        });
+        farh.addEventListener('input', function () {
+            let f = this.value;
+            let c = (f - 32) * 5 / 9;
+            if (!Number.isInteger(c)) {
+                c = c.toFixed(4);
+            }
+            calcus.value = c;
+        });
+
+        let cgcol = document.getElementsByClassName("hn");
+        for ( let x = 0; x < cgcol.length; x++){
+            cgcol[x].style.color = "red";
+            
+        }
+
+
+        cgcol[x].addEventListener('focus', myFcsFunction);
+            cgcol[x].addEventListener('blur', myBlrFunction);
+        function myFcsFunction() {
+            cgcol.style.background = "yellow";
+        }
+
+        function myBlrFunction() {
+            cgcol.style.background = "white";
+        }
+      
+
+    </script>
+</body>
+
+</html>

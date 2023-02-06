@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <title>JAVASCRIPT TEST CODE</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="script.js"></script>
+    <script src="first.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <!-- SELECTION ELEMENT BY ID, CLASS ,TAGS & QUERY SLECTOR ALL start-->
+
+                <ul>
+                    <li class="cl">List 1</li>
+                    <li id="selbyid">List 2</li>
+                    <li>List 3</li>
+                    <li class="cl">List 4</li>
+                </ul>
+
+                <h2>Heading 1</h2>
+                <div id="div1">
+                    <p class="intro">paragraph1</p>
+                    <h2>Heading 2</h2>
+                    <p>paragraph2</p>
+                    <h2>Heading 3</h2>
+                    <p class="intro">paragraph3</p>
+                    <h2>Heading 4</h2>
+                </div>
+                <!-- Selection element by id, class, tags & query ends -->
+
+                <!-- TAVERSING ELEMENT SELECTOR START-->
+
+                <h1>Traversing element selector</h1>
+                <!-- from child to parent -->
+                <ul>
+                    <li id="nea">List 1</li>
+                    <li>List 2</li>
+                    <li>List 3</li>
+                </ul>
+                <!-- form parent to child -->
+                <ul id="par">
+                    <li>A</li>
+                    <li class="sib">B</li>
+                    <li>C</li>
+                    <li>D</li>
+                </ul>
+
+                <!-- TAVERSING ELEMENT SELECTOR ENDS-->
+
+                <!-- Append Element (Add next or after the element withour replacing the element)-->
+
+                <h1>TO Append the text</h1>
+                <div id="apnd">
+                    <h3>To Append after this line</h3>
+                </div>
+                <!-- Insert Before an element using insert before function -->
+                <div>
+                    <h2>Insert element before using before function</h2>
+                    <ul id="bfrslect">
+                        <li>Insert1</li>
+                        <li>Insert2</li>
+                        <li>Insert3</li>
+                        <li>Insert4</li>
+                        <li>Insert5</li>
+                    </ul>
+                </div>
+                <!-- INSERT ADJECENT ELEMENT -->
+
+                <!-- beforebegin -->
+                <div id="adj"> <!--selected-->
+                    <h2>Insert Adjecent</h2>
+                    <p>This is p tag</p>
+                    <!-- beforeend -->
+                </div>
+                <!-- afterend -->
+
+
+
+
+            </div>
+
+            <div class="col-sm-6">
+                <div>
+                    <h1>DOM Events</h1>
+                </div>
+
+                <div>
+                    <button id="btn1"> Click me!</button>
+                    <!-- For inline event we will write like this -->
+                    <button id="btn11" onclick="btnClick()">Click me!</button>
+                    <button id="3rd">Third way for Event</button>
+                </div>
+
+                <!-- FOCUS & BLUR Event -->
+
+                <form action ="">
+                    <input type="text" id="myInput">
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script>
+        // selecting element by id
+        let elm = document.getElementById("selbyid");
+        console.log(elm.innerHTML);
+
+        // selecting element by class
+        let cs = document.getElementsByClassName("cl");
+
+        for (let i = 0; i < cs.length; i++) {
+            cs[i].innerHTML = "<p>Selected by class</p>";
+        }
+        // Selecting by Tags name
+
+        let kdj = document.getElementById("div1");
+        let fd = kdj.getElementsByTagName("h2");
+
+        for (let i = 0; i < fd.length; i++) {
+            fd[i].innerHTML = "Change by tags"
+        }
+
+        // QUERY SLECTOR ALL FUNCTION
+
+        let jdf = document.querySelectorAll("p.intro");
+        console.log(elm);
+
+        for (let i = 0; i < jdf.length; i++) {
+            jdf[i].innerHTML = "Change by QUERY SELCTOR ALL";
+        }
+        // TRAVERSING SELCTION 
+        // 1.From child to parent elemt
+        let aaa = document.getElementById("nea");
+        let pze = aaa.parentElement;
+        console.log(pze);
+
+        // 2.From parent to child element
+        let dk = document.getElementById("par");
+        let da = dk.firstElementChild;
+        let ls = dk.lastElementChild;
+        let al = dk.children;
+        console.log(da);
+        console.log(ls);
+        console.log(al);
+        // SELECTING BY NEXT AND PREVIOUS SIBLING
+
+        let sbpn = document.getElementsByClassName("sib");
+        let bz = sbpn.previousElementSibling;
+        console.log(bz);
+
+        // Append the element using method createTextNode()
+        let ndpa = document.getElementById("apnd");
+
+        let z1 = document.createElement('h5')     /* jo v tag cahiye wo dena hai yaha*/
+        // to add class and id to the element
+        z1.className = "try df";
+        z1.id = "n07";
+
+        // to provide content to append element below line
+        let text5 = document.createTextNode("This is Appended h5 tag element");
+        // to add content to append elemt below line
+        z1.appendChild(text5)
+        // to add append child element to id apnd below line code
+        ndpa.appendChild(z1);
+
+        // APPEND THE ELEMENT USING  textContent PROPERTIES
+
+        let ndpa1 = document.getElementById("apnd");
+
+        let z2 = document.createElement('h5');
+        z2.textContent = "Append text created by textContent properties";
+        ndpa1.appendChild(z2);
+
+        // Insert Before an element using insert before function
+
+        let sel = document.getElementById("bfrslect");
+        let itm = document.createElement('li');
+        itm.textContent = "new List 6";
+        let apost = sel.firstElementChild.nextElementSibling;
+        //  let apost = sel.firstElementChild;
+        sel.insertBefore(itm, apost);
+        // to REMOVE THE ELEMENT we use removeChild()
+        let rev = document.getElementById("bfrslect");
+        let rmv = rev.lastElementChild;
+        rev.removeChild(rmv);
+
+        // TO REPLACE ELEMENT WE USE replaceChild()
+        let rep = document.getElementById("bfrslect");
+        let rpitm = document.createElement('li');
+        rpitm.textContent = "Replaced list item";
+
+        let rpc = rep.firstElementChild.nextElementSibling.nextElementSibling;
+        rep.replaceChild(rpitm, rpc);
+
+
+
+        // ADJECENT ELEMENT SELECTION
+        let sdd = document.getElementById("adj");
+
+        let htm = "<h1>Adjecent added Item</h1>";
+        sdd.insertAdjacentHTML('beforeend', htm);
+    </script>
+    <!-- DOM events -->
+    <script>
+        function btnClick(){
+            alert("Button was clicked By Event Listener!");
+        }
+        let btn = document.getElementById("btn1");
+        btn.addEventListener('click', btnClick);
+        // Third way to select event
+        let btn3 = document.getElementById("3rd");
+        btn3.addEventListener('click', function(){
+            alert("Clicked by Third way of Event Listner");
+        });
+        btn3.addEventListener('mouseover',function(){
+            alert("Mouse has moved over the button");
+        });
+        // To Remove Evenet Listener we use removeEventListner
+        // We can also remove any event conditionaly 
+        // syntax eg
+            // btn.removeEventListener('mouseover',btnClick);
+
+
+
+
+        // TO know input or clicked button on keyboard
+
+        window.addEventListener('keydown', checkKey);
+        
+        function checkKey(event){
+            console.log(event.key);
+        }
+        // To know that we have reached pixel provided
+
+        // window.adddEventListner('scroll', function(){
+        //     if(window.pageYOffset > 550){
+        //         document.body.style.background = "red";
+        //     }else{
+        //         document.body.style.background = "white";
+        //     }
+
+        // });
+
+        // Foucs & Blur
+
+        let x = document.getElementById("myInput");
+
+        x.addEventListener('focus',myFcsFunction);
+        x.addEventListener('blur',myBlrFunction);
+
+        function myFcsFunction(){
+            x.style.background = "yellow";
+        }
+
+        function myBlrFunction(){
+            x.style.background = "white";
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>

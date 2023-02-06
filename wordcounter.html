@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Word and Chracter Counter</title>
+    <style>
+        .wch {
+            text-align: center;
+            box-sizing: border-box;
+            background-color: rgb(241, 178, 101);
+            border: 1px solid rgb(241, 178, 101);
+            border-radius: 5px 5px 0px 0px;
+            padding: 5px;
+            margin-bottom: 0px;
+        }
+
+        #textbox {
+            width: 100%;
+            border-color: rgb(241, 178, 101);
+            font-size: 18px;
+        }
+
+        .wordsdetls {
+            text-align: center;
+            box-sizing: border-box;
+            background-color: rgb(241, 178, 101);
+            border: 1px solid rgb(241, 178, 101);
+            border-radius: 0px 0px 5px 5px;
+            padding: 10px;
+            margin-top: -6px;
+        }
+
+        .nu1 {
+            font-size: 20px;
+            color: #fc0303;
+        }
+
+        .hw {
+            padding-right: 10px;
+        }
+
+        .btn {
+            height: 26px;
+            display: inline-block;
+            border: 1px solid grey;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        #white {
+            background-color: white;
+        }
+
+        #aquablue {
+            background-color: aquamarine;
+        }
+
+        #violet {
+            background-color: violet;
+        }
+
+        #black {
+            background-color: #000000;
+        }
+        .nh2{
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 mt-5" id="bgcl">
+                <!-- Background Color Changer -->
+                <div id="colorchanger" class="nh2 mb-4">
+                    <span class="btn" id="white" onclick="changeBG('#ffffff')"></span>
+                    <span class="btn" id="aquablue" onclick="changeBG('#7fffd4')"></span>
+                    <span class="btn" id="violet" onclick="changeBG('#ce9aff')"></span>
+                    <span class="btn" id="black" onclick="changeBG('#000000')"></span>
+                </div>
+                <!-- Background color changer ends -->
+
+
+                <div class="wch">
+                    <h1 class="t2">Word and Character counter</h1>
+                </div>
+
+                <textarea id="textbox" rows="8" cols="60"></textarea>
+
+                <p class="wordsdetls t2">
+                    <span class="hw"><span id="wrds" class="nu1">0</span> Word </span>
+                    <span id="char" class="nu1">0</span> Character
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        let textbox = document.getElementById("textbox");
+
+        textbox.addEventListener('input', function () {
+            var text = this.value;
+            let chr = text.length;
+            document.getElementById("char").innerHTML = chr;
+
+            text = text.trim();
+            let wrd = text.split(" ");
+            let cleanemptywrdarray = wrd.filter(function (elmt) {
+                return elmt != "";
+            });
+            document.getElementById("wrds").innerHTML = cleanemptywrdarray.length;
+        });
+
+    </script>
+    <!-- Background color change js -->
+    <script>
+        function changeBG(color){
+            document.body.style.backgroundColor = color;
+            let ttx = document.getElementsByClassName("t2");
+            if (color == "#000000"){
+                for (let elm of ttx){
+                    elm.style.color = "white";
+                }
+            }else{
+                for (let elm of ttx){
+                    elm.style.color = "black";
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
